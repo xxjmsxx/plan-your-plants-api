@@ -1,6 +1,10 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::API
+  include ActionController::Cookies
+  include ActionController::RequestForgeryProtection
+
   before_action :authorized
+  before_action :set_csrf_token
 
   def encode_token(payload)
     JWT.encode(payload, 'your_secret_key')
@@ -34,5 +38,15 @@ class ApplicationController < ActionController::API
 
   def authorized
     render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
+  end
+
+  private
+
+  def set_csrf_token
+    cookies['CSRF-TOKEN'] = {
+      value: form_authenticity_token,
+      secure: Rails.env.production?,
+      same_site: :strict
+    }
   end
 end
