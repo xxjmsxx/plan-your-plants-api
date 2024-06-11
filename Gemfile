@@ -17,6 +17,9 @@ gem 'bcrypt', '~> 3.1.7'
 # token auth
 gem 'jwt'
 
+# cors-fix
+gem 'rack-cors'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
@@ -51,4 +54,16 @@ group :development do
   # gem "spring"
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'factory_bot_rails' # For creating test data
+  gem 'faker' # For generating random test data
+end
+
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers' # This gem will handle downloading the ChromeDriver binary
 end
