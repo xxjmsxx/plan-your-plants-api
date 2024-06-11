@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 # login
-post 'login', to: 'users#login'
-post 'register', to: 'users#create'
+post 'login', to: 'sessions#create'
+delete 'logout', to: 'sessions#destroy'
 
-resources :users, only: [:index, :show, :update, :destroy]
+resources :users, only: [:index, :create, :show, :update, :destroy]
 resources :gardens, only: [:index, :show, :create, :update, :destroy]
 resources :plants, only: [:index, :show, :create, :update, :destroy]
 resources :fertilizers, only: [:index, :show, :create, :update, :destroy]
