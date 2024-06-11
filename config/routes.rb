@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+resources :users, only: [:index, :show, :create, :update, :destroy]
+resources :gardens, only: [:index, :show, :create, :update, :destroy]
+resources :plants, only: [:index, :show, :create, :update, :destroy]
+resources :fertilizers, only: [:index, :show, :create, :update, :destroy]
+resources :garden_plants, only: [:index, :show, :create, :update, :destroy]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
