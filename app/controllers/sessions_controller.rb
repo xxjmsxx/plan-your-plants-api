@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
         secure: Rails.env.production?,
         same_site: :strict,
         expires: 1.hour.from_now
-      }
+        }
       cookies[:auth_status] = { value: 'authenticated', path: '/', secure: Rails.env.production?, same_site: :strict }
-      render json: { user: user }, status: :ok
+      render json: { user: user, cookies: cookies}, status: :ok
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end
@@ -28,6 +28,6 @@ class SessionsController < ApplicationController
   private
 
   def encode_token(payload)
-    JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    JWT.encode(payload, Rails.application.credentials.secret_key_base)
   end
 end
