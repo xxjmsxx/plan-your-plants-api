@@ -1,3 +1,4 @@
+# spec/requests/users_spec.rb
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
@@ -14,7 +15,6 @@ RSpec.describe "Users", type: :request do
             }
           }
         }.to change(User, :count).by(1)
-
         expect(response).to have_http_status(:created)
       end
     end
@@ -31,8 +31,7 @@ RSpec.describe "Users", type: :request do
             }
           }
         }.to change(User, :count).by(0)
-
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

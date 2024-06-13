@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_11_121025) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "fertilizers", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -21,11 +24,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_121025) do
   end
 
   create_table "garden_plants", force: :cascade do |t|
-    t.integer "plant_id", null: false
-    t.integer "garden_id", null: false
-    t.integer "fertilizer_id", null: false
-    t.datetime "last_watered"
-    t.datetime "last_fertilized"
+    t.bigint "plant_id", null: false
+    t.bigint "garden_id", null: false
+    t.bigint "fertilizer_id", null: false
+    t.datetime "last_watered", precision: nil
+    t.datetime "last_fertilized", precision: nil
     t.integer "health"
     t.text "notes"
     t.datetime "created_at", null: false
@@ -40,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_121025) do
     t.string "location"
     t.integer "size"
     t.string "category"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_gardens_on_user_id"

@@ -6,6 +6,8 @@ user_data = [
   { email: 'test1@example.com', password: '123456', username: "test1" },
 ]
 
+puts "Creating Users..."
+
 # Seed users with hashed passwords
 user_data.each do |data|
   user = User.create!(
@@ -13,6 +15,4 @@ user_data.each do |data|
     email: data[:email],
     password: data[:password]
   )
-
-  puts user.password_digest
 end

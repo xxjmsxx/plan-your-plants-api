@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-# login
-post 'login', to: 'sessions#create'
-delete 'logout', to: 'sessions#destroy'
+
+# Current_user
+  get '/current_user_info', to: 'users#current_user_info'
+
+# Session actions
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+
+
 
 resources :users, only: [:index, :create, :show, :update, :destroy]
 resources :gardens, only: [:index, :show, :create, :update, :destroy]

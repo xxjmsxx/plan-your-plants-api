@@ -8,8 +8,12 @@ class UsersController < ApplicationController
     if user.save
       render json: user, status: :created
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_content
     end
+  end
+
+  def current_user_info
+    render json: current_user
   end
 
   private
