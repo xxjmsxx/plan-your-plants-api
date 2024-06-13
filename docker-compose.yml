@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   frontend:
     build:
@@ -7,8 +9,6 @@ services:
       - "5173:5173"
     depends_on:
       - backend
-    environment:
-      - VITE_API_URL=http://backend:3000
     networks:
       - app-network
 
@@ -19,7 +19,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/myapp_development
+      - DATABASE_URL=postgresql://postgres:password@db:5432/planyourplantsapi_development
     depends_on:
       - db
     networks:
@@ -27,12 +27,12 @@ services:
 
   db:
     image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: planyourplantsapi_development
     ports:
       - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=myapp_development
     networks:
       - app-network
 

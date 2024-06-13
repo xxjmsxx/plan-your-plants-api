@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.1.2"
 
 # Rails
-gem "rails", "~> 7.1.3", ">= 7.1.3.3"
+gem "rails", "7.1.3.4"
 
 # Database
 gem "sqlite3", "~> 1.4"
@@ -17,7 +17,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Token authentication
 gem 'jwt'
 
-# postgred
+# postgres
 gem 'pg'
 
 # CORS handling
@@ -28,6 +28,9 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+# Database cleaner for tests
+gem 'database_cleaner-active_record'
 
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0' # Ensure compatibility with Rails 7

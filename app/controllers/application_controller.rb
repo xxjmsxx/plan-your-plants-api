@@ -1,4 +1,3 @@
-# app/controllers/application_controller.rb
 class ApplicationController < ActionController::API
   include ActionController::Cookies
   include ActionController::RequestForgeryProtection
@@ -7,19 +6,17 @@ class ApplicationController < ActionController::API
   before_action :set_csrf_token
 
   def encode_token(payload)
-    JWT.encode(payload, 'your_secret_key')
-  end
-
-  def auth_header
-    request.headers['Authorization']
+    JWT.encode(payload, Rails.application.secret_key_base)
   end
 
   def decoded_token
-    if auth_header
-      token = auth_header.split(' ')[1]
+    if cookies.signed[:jwt]
+      token = cookies.signed[:jwt]
       begin
-        JWT.decode(token, 'your_secret_key', true, algorithm: 'HS256')
-      rescue JWT::DecodeError
+        code = JWT.decode(token, Rails.application.secret_key_base, true, algorithm: 'HS256')
+        code
+      rescue JWT::DecodeError => e
+        Rails.logger.error("JWT decoding error: #{e.message}")
         nil
       end
     end

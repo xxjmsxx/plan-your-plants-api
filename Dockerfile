@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # migrate and start server
-CMD ["sh", "-c", "bin/rails db:migrate && bin/rails db:seed && bin/rails server -b 0.0.0.0 "]
+CMD ["sh", "-c", "bin/rails db:create db:migrate db:seed && bin/rails server -b 0.0.0.0 "]

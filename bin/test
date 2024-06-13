@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Ensure the test database is up to date
+RAILS_ENV=test bundle exec rails db:create db:migrate
+
+# Run RSpec tests
+bundle exec rspec
+
+# Run frontend tests(to be created)
+# cd frontend && npm test
