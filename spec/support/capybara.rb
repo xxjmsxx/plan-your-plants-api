@@ -10,13 +10,10 @@ Capybara.register_driver :selenium_chrome do |app|
     app,
     browser: :chrome,
     options: Selenium::WebDriver::Chrome::Options.new(
-      args: %w[headless disable-gpu no-sandbox window-size=1400,1400]
+      args: %w[disable-gpu no-sandbox window-size=1400,1400]
     )
   )
 end
 
-Capybara.default_driver = :selenium_chrome_headless
-Capybara.javascript_driver = :selenium_chrome_headless
-
-# If your React app is running on a different port
-Capybara.app_host = 'http://localhost:5173' # React app URL
+Capybara.default_driver = :selenium_chrome
+Capybara.javascript_driver = :selenium_chrome
