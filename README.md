@@ -1,4 +1,4 @@
-# Plan Your Plants API
+# Plan Your Plants API☘️
 
 Welcome to the backend API for Plan Your Plants, a web application designed to help users manage their plant collections and care routines.
 
