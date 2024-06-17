@@ -1,7 +1,7 @@
 # spec/requests/users_spec.rb
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "User Creation", type: :request do
   describe "POST /users" do
     context "with valid parameters" do
       it "creates a new user" do
