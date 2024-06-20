@@ -22,7 +22,6 @@
 
     def destroy
       cookies.delete(:jwt)
-      cookies.delete(:auth_status)
       head :no_content
     end
 
