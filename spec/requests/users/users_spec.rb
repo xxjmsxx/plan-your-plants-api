@@ -2,11 +2,11 @@
 require 'rails_helper'
 
 RSpec.describe "User Creation", type: :request do
-  describe "POST /users" do
+  describe "POST /api/users" do
     context "with valid parameters" do
       it "creates a new user" do
         expect {
-          post '/users', params: {
+          post '/api/users', params: {
             user: {
               username: 'testuser',
               email: 'test@example.com',
@@ -22,7 +22,7 @@ RSpec.describe "User Creation", type: :request do
     context "with invalid parameters" do
       it "does not create a new user" do
         expect {
-          post '/users', params: {
+          post '/api/users', params: {
             user: {
               username: '',
               email: 'test@example.com',
