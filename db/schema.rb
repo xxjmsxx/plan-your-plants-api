@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_121025) do
   create_table "fertilizers", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "kind"
     t.string "nutrient_ratio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
